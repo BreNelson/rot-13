@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>ROT13</title>
+		<style>
+			body {
+				text-align: center;
+				font-size: 130%;
+			}
+		</style>
+	</head>
+	<body>		
+		<script type="text/javascript"> 
+
+			function calc( input1, input2, key ) {
+				return String.fromCharCode( input2 + ( ( input1 - input2 + key ) % ( key * 2 ) ) );
+			}
+
+			function rotate(message){
+ 				 temp1 = 'a'.charCodeAt(), z = temp1 + 26,
+ 				 temp2 = 'A'.charCodeAt(), Z = temp2 + 26;
+				 var array = [], text, length = message.length;
+
+				
+ 				while(length--) {
+					text = message.charCodeAt( length );
+					
+					if( text>=temp1 && text<z ) { array[length] = calc( text, temp1, 13 ); }
+
+					else if( c>=temp2 && text<Z ) { array[length] = calc( text, temp2, 13 ); }
+
+					else { array[length] = message.charAt( length ); }
+ 				}
+
+				
+ 				return array.join( '' );
+				}
+				
+			function encrypt() {
+				var plaintext = document.getElementById("input").value;
+				var ciphertext = rotate(plaintext);
+				document.getElementById("output").innerHTML = ciphertext;
+   			}
+		</script>
+		
+		<h1>Rot13 uses a simple Ceasar Cipher</h1> 
+		<h2>(It's bad for keeping secrets, but good for spoilers)</h2>
+		<textarea id="input" rows="10" cols="50" accept-charset="UTF-8"></textarea>
+		<br>		
+		<button type="button" onclick="encrypt()">Rotate!</button>
+
+		<p id="output">Isn't Filler Text Just Great? This is where your text will be.</p>
+
+		<br><br><hr>
+		<footer>Go Rocky!</footer>
+	</body>
+</html>
