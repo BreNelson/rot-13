@@ -40,4 +40,8 @@ textarea{ background-color: black;
 
 p{
 	font-size: 50px;
+	background-color: black;
+	box-shadow: 0px 2px 10px aqua;
+	color: white;
 }
+
