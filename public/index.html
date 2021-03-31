@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Rot 13</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		
+		<script type="text/javascript"> 
+
+
+			function encrypt(){
+				
+				var pt = document.getElementById("input").value;		
+				
+				var xhr = new XMLHttpRequest();	
+				xhr.open("GET","http://localhost:3000/encrypt", true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = update;
+				xhr.send();
+   			}
+		
+		</script>
+
+		<h1 style="text-align: center">Encrypt</h1>
+
+		<textarea id="input" rows="10" cols="30"></textarea>
+		<button type="button" onClick="encrypt()">Encrypt</button>
+
+		<div><p></p></div>
+
+	</body>
+</html>
