@@ -32,18 +32,14 @@ app.get('/encrypt', (request, response)  => {
 app.get('/',function(req,res){
     res.sendFile(__dirname + '/index.html');   
 });
+	const KEY = 1
+    function rotate(str) { 
+    return str.split('').map(x => rotate.lookup[x] || x).join('')
+          }
+      rotate.input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
+      rotate.output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('')
+      rotate.lookup = rotate.input.reduce((m,k,i) => Object.assign(m, {[k]: rotate.output[i]}), {})
 
-
-
-
-const KEY = 13;
-			
-function rotate(str) { 
-    		return str.split('').map(x => rotate.lookup[x] || x).join('')
-  				}
-  			rotate.input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('')
-  			rotate.output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'.split('')
-  			rotate.lookup = rotate.input.reduce((m,k,i) => Object.assign(m, {[k]: rotate.output[i]}), {})
 				
 
 

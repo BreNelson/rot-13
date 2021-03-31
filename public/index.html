@@ -16,20 +16,25 @@
 				var pt = document.getElementById("input").value;		
 				
 				var xhr = new XMLHttpRequest();	
-				xhr.open("GET","http://localhost:3000/encrypt", true);
+				xhr.open("GET","http://localhost:3000/encrypt?plaintext=" + pt, true);
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				xhr.onreadystatechange = update;
+				xhr.onreadystatechange = function (){
+					document.getElementById("output").innerHTML = xhr.responseText;
+				}
+				
 				xhr.send();
    			}
+
 		
 		</script>
 
-		<h1 style="text-align: center">Encrypt</h1>
+		<h1 style="text-align: center">Encrypt - Rot 13</h1>
 
 		<textarea id="input" rows="10" cols="30"></textarea>
+		<br><br>
 		<button type="button" onClick="encrypt()">Encrypt</button>
-
-		<div><p></p></div>
+		<br><br>
+		<div><p id="output">Encrypted text will appear here</p></div>
 
 	</body>
 </html>
